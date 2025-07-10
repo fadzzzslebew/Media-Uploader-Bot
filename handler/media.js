@@ -1,4 +1,4 @@
-import uploadFile from 'cloudku-uploader';
+import { uploadFile } from 'cloudku-uploader';
 import { fileTypeFromBuffer } from 'file-type';
 import axios from 'axios';
 import config from "../settings.js";
@@ -111,7 +111,7 @@ const handleMedia = async (bot, msg, platform) => {
     const result = await uploadFile(buffer, fileName);
     if (!result?.status) throw new Error("Gagal upload.");
 
-    const { filename, type, size, url } = result.result;
+    const { filename, type, size, url } = result.data;
 
     const caption = `✅ *Upload Sukses!*\n\n` +
       `📂 *File:* ${filename}\n` +
